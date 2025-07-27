@@ -21,7 +21,7 @@
 .logo {
   color: #00ffe5;
   font-size: 2rem;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   letter-spacing: 1px;
   text-shadow: 0 0 5px #00ffe5;
 }
@@ -29,7 +29,7 @@
 /* === MENU === */
 .navbar-menu {
   display: flex;
-  justify-content:start;
+  justify-content: start;
   list-style: none;
   gap: 1rem;
 }
@@ -43,7 +43,7 @@
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -73,32 +73,126 @@
   }
 }
 
-
 /* === CONTENEDOR GENERAL DE LAS TARJETAS Y GENEROS=== */
-.containerHome{
+.containerHome {
   display: flex;
   gap: 2.5rem;
-  width: 100%;
+  width: auto;
 }
 
+@media (max-width: 1024px) {
+  .containerHome {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    height: auto;
+  }
+}
+
+/* === CONTENEDOR DE SPINNER === */
+
+.loadingContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  transform: rotateX(70deg);
+  animation: 1s spin linear infinite;
+}
+.loader:after {
+  color: rgb(53, 146, 146);
+  transform: rotateY(70deg);
+  animation-delay: 0.4s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    box-shadow: 0.2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: 0.2em 0.2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 0.2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -0.2em 0.2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -0.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -0.2em -0.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -0.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: 0.2em -0.2em 0 0 currentcolor;
+  }
+}
+
+/* === CONTENEDOR DE TODOS LOS JUEGOS === */
 .AllGames {
   display: flex;
   flex-direction: column;
-  
-  
   gap: 2.5rem;
   padding: 3rem 2rem;
   width: 85%;
   margin: 0 auto;
-
   background: radial-gradient(ellipse at top left, #1c1c1c, #0f0f0f);
 }
 
-.gridGames{
+.gridGames {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;;
-
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  min-height: 250px;
 }
 
 /* === CARD ESTILO GAMER === */
@@ -107,7 +201,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 350px;
+  height: 360px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 255, 255, 0.08);
@@ -151,12 +245,10 @@
   border-left: 2px solid rgba(0, 255, 255, 0.4);
 }
 
-
-
 .cardOverlay h3 {
   font-size: 1.2rem;
   color: #00ffe5;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
 }
 
 .ratings p {
@@ -165,13 +257,15 @@
   color: #c0f9ff;
 }
 
-.platforms, .genres {
+.platforms,
+.genres {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
-.platforms span, .genres span {
+.platforms span,
+.genres span {
   font-size: 0.7rem;
   padding: 4px 10px;
   border-radius: 12px;
@@ -181,12 +275,11 @@
   transition: all 0.2s ease;
 }
 
-.platforms span:hover, .genres span:hover {
+.platforms span:hover,
+.genres span:hover {
   background-color: #00ffe5;
   color: #0f0f0f;
 }
-
-
 
 /* === PAGINATION === */
 .pagination {
@@ -231,20 +324,19 @@
   box-shadow: none;
 }
 
-.containerGeneros{
+.containerGeneros {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 10px ;
+  padding: 10px;
   width: 15%;
- 
 }
 
-.genreItem{
+.genreItem {
   width: 180px;
   height: 100px;
-  background-position:center;
+  background-position: center;
   background-size: cover;
   cursor: pointer;
   margin: 10px;
@@ -253,12 +345,12 @@
   transition: all 0.3s ease;
 }
 
-.genreItem:hover{
+.genreItem:hover {
   transform: scale(1.03);
   box-shadow: 0 4px 20px rgba(0, 255, 255, 0.15);
 }
 
-.genreItem h3{
+.genreItem h3 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -273,11 +365,76 @@
   transition: all 0.3s ease;
 }
 
-.genreItem h3:hover{
+.genreItem h3:hover {
   background-color: rgba(0, 0, 0, 0.2);
   text-shadow: 0 0 10px #00ffe5;
 }
 
+.scrollButtons {
+  display: none;
+}
 
+@media (max-width: 1024px) {
+  .navbar-container {
+    width: 100%;
+  }
 
+  .AllGames {
+    width: 100%;
+  }
 
+  .containerGeneros {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
+
+  .containerGeneros > .genreItem {
+    display: none;
+  }
+
+  .genresScrollContainer {
+    display: flex;
+    gap: 1rem;
+    width: auto;
+    overflow: hidden;
+    transition: none;
+    scroll-behavior: smooth;
+  }
+
+  .genreItem,
+  .genre-button {
+    flex: 0 0 auto;
+    width: 180px;
+    height: 100px;
+    margin: 0;
+  }
+
+  .genre-button {
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 8px;
+    background: white;
+  }
+
+  .scrollBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .scrollButtons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .scrollBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}

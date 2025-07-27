@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addFavorite } from "../features/games/favoritesSlice";
 
-export const Games = ({ games }) => {
+export const Games = ({ games, gamesError, gamesLoading }) => {
   const dispatch = useDispatch();
 
   const addFavoritesGames = (games) => {
@@ -9,7 +9,13 @@ export const Games = ({ games }) => {
   };
   return (
     <div className="gridGames">
-      {games &&
+      {gamesLoading && <div className="loadingContainer"><span className="loader"></span></div>}
+      {gamesError && (
+  <pre style={{ color: "red" }}>
+    {JSON.stringify(gamesError, null, 2)}
+  </pre>
+)}
+      {Array.isArray(games?.results) &&
         games.results.map((game) => (
           <div className="cardGame" key={game.id}>
             <img

@@ -14,7 +14,7 @@ export const apiSlice = createApi({
     fetchGenres: builder.query({
       query: () => `genres?key=${apiKey}`,
     }),
-  }),
+  })
 });
 
 

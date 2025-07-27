@@ -16,8 +16,9 @@ const Home = () => {
     error: gamesError,
     isLoading: gamesLoading,
   } = useFetchGamesQuery({ page, genre });
+  
   const { data: genreGames } = useFetchGenresQuery();
-
+ 
   const dispatch = useDispatch();
   const onSelectGenero = (slug) => {
     dispatch(setGenre(slug));
@@ -31,8 +32,8 @@ const Home = () => {
     <div className="containerHome">
       <Generos generos={genreGames} onSelectGenero={onSelectGenero} />
       <div className="AllGames">
-        <Games games={games} />
-        <Paginacion page={page} games={games} />
+        <Games games={games} gamesError={gamesError} gamesLoading={gamesLoading} />
+        <Paginacion page={page} games={games} genre={genre} />
       </div>
     </div>
   );

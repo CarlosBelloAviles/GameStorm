@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const Favorites = () => {
   const { favorites } = useSelector((state) => state.favorites);
-
+  
   return (
     <div>
       {favorites && favorites.map((game) => (
