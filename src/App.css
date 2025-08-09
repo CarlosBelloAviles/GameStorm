@@ -17,47 +17,91 @@
   margin: 0 auto;
 }
 
+.navbar-left{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 /* === LOGO === */
 .logo {
   color: #00ffe5;
   font-size: 2rem;
   font-family: "Orbitron", sans-serif;
   letter-spacing: 1px;
-  text-shadow: 0 0 5px #00ffe5;
+  text-shadow: 0 0 5px #0c0c0c;
+  text-decoration: none;
 }
+
+.Active{
+  border: 2px solid #00ffe5;
+  color: #00ffe5;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  background-color: rgb(8, 90, 117); 
+  box-shadow: 0 0 10px #00ffe5, 0 0 20px #00ffe5;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: "Orbitron", sans-serif;
+  cursor: pointer;
+}
+
+.Inactive{
+  border: 2px solid #00ffe5;
+  color: #00ffe5;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-family: "Orbitron", sans-serif;
+  cursor: pointer;
+  }
+
 
 /* === MENU === */
 .navbar-menu {
   display: flex;
   justify-content: start;
   list-style: none;
-  gap: 1rem;
+  
 }
 
-.navbar-menu li button,
-.register-btn {
-  background: transparent;
-  border: 2px solid #00ffe5;
-  color: #00ffe5;
+/* === SEARCH GAMES === */
+.search-input {
   padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
+  border: 2px solid #00ffe5;
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #00ffe5;
   font-family: "Orbitron", sans-serif;
   transition: all 0.3s ease;
 }
 
-.navbar-menu li button:hover,
-.register-btn:hover {
-  background: #00ffe5;
-  color: #0f0f0f;
-  box-shadow: 0 0 10px #00ffe5, 0 0 20px #00ffe5;
+.search-input:focus {
+  border-color: #00ffe5;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.InputButton {
+  background: linear-gradient(to right, rgb(37, 202, 231), rgb(6, 127, 136));
+  border: 2px solid #00ffe5;
+  border-left: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  
+  font-family: "Orbitron", sans-serif;
 }
 
 /* === RIGHT SIDE === */
 .navbar-right {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 /* === RESPONSIVE === */
@@ -374,15 +418,54 @@
   display: none;
 }
 
+
+/* === FAVORITES === */
+.containerFavorites {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 1rem;
+  height: auto;
+  background: radial-gradient(ellipse at top left, #1c1c1c, #0f0f0f);
+}
+
+.cardGameFavorites{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 360px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.cardGameFavorites:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.15);
+}
+
+.imgFavorite {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+}
+
+
+/* === MEDIA QUERIES === */
 @media (max-width: 1024px) {
   .navbar-container {
     width: 100%;
   }
 
+
+  /* === GAMES === */
   .AllGames {
     width: 100%;
   }
 
+  /* === GENRES === */
   .containerGeneros {
     display: flex;
     flex-direction: row;
@@ -417,6 +500,7 @@
     background: white;
   }
 
+  /* === SCROLL BUTTONS === */
   .scrollBtn {
     background: none;
     border: none;
@@ -436,5 +520,14 @@
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .containerFavorites{
+  grid-template-columns: repeat(1, 1fr);
+  height: auto;
+  padding: 30px;
   }
 }

@@ -1,12 +1,12 @@
-import Generos from "../components/Generos";
-import { Games } from "../components/Games";
-import Paginacion from "../components/Paginacion";
+import Generos from "../../components/Generos";
+import { Games } from "../../components/Games";
+import Paginacion from "../../components/Paginacion";
 import {
   useFetchGamesQuery,
   useFetchGenresQuery,
-} from "../services/apiSlice";
+} from "../../services/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { setGenre } from "../features/games/gameSlice";
+import { setGenre } from "../../features/games/gameSlice";
 import { useEffect } from "react";
 
 const Home = () => {
@@ -16,8 +16,9 @@ const Home = () => {
     error: gamesError,
     isLoading: gamesLoading,
   } = useFetchGamesQuery({ page, genre });
+
   
-  const { data: genreGames } = useFetchGenresQuery();
+const { data: genreGames } = useFetchGenresQuery();
  
   const dispatch = useDispatch();
   const onSelectGenero = (slug) => {

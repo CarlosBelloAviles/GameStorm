@@ -9,24 +9,43 @@ const Navbar = () => {
           <Link className="logo" to="/">
             🎮 GameStorm
           </Link>
+        </div>
+
+        <div className="navbar-menu">
+          <input
+            type="text"
+            placeholder="Buscar juegos..."
+            className="search-input"
+          />
+          <button className="InputButton">buscar</button>
+        </div>
+        <div className="navbar-right">
           <NavLink
             className={({ isActive }) => (isActive ? "Active" : "Inactive")}
-            to="/Favorites"
+            to="admin/favorites"
           >
             Favoritos
           </NavLink>
-        </div>
+          <NavLink
+            className={({ isActive }) => (isActive ? "Active" : "Inactive")}
+            to="/auth/login"
+          >
+            Login
+          </NavLink>
 
-        <ul className="navbar-menu">
-          <li>
-            <button>Nosotros</button>
-          </li>
-          <li>
-            <button>Contacto</button>
-          </li>
-        </ul>
-        <div className="navbar-right">
-          <button className="register-btn">Regístrate</button>
+          <NavLink
+            className={({ isActive }) => (isActive ? "Active" : "Inactive")}
+            to="/auth/register"
+          >
+            Register
+          </NavLink>
+
+          <NavLink
+            className={({ isActive }) => (isActive ? "Active" : "Inactive")}
+            to="/admin/usuario"
+          >
+            Mi Perfil
+          </NavLink>
         </div>
       </nav>
     </header>
