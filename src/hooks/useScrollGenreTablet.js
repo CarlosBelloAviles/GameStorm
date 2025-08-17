@@ -1,3 +1,4 @@
+// Este archivo contiene un hook personalizado para manejar el desplazamiento horizontal de géneros en una interfaz de usuario. Permite desplazar el contenido hacia la izquierda o hacia la derecha, y si se alcanza el final del contenido, se reinicia el desplazamiento al inicio o al final según corresponda.
 const useScrollGenre = (scrollRef) => {
   const scrollLeft = () => {
     if (scrollRef.current) {

@@ -1,21 +1,18 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setPage } from "../features/games/gameSlice";
+import { selectTotalPages } from "../features/games/selectors";
 
- 
-const Paginacion = ({ page, games, genre }) => {
+
+ const Paginacion = ({ page }) => {
   const dispatch = useDispatch();
   
-  const gamesPerPage = 20; 
-  const maxPagesByGenre = 500;
-  const calculatedPages = Math.ceil(games?.count / gamesPerPage);
-  const totalPages = genre
-    ? Math.min(maxPagesByGenre, calculatedPages)
-    : calculatedPages;
-
-   
+  // Obtenemos el número total de páginas desde el estado
+  const totalPages = useSelector(selectTotalPages);
+  
+  // Función para manejar el cambio de página
   const PageHandler = (num) => {
     const pageNumber = parseInt(num);
-    
+    // Validamos que el número de página sea un entero y esté dentro del rango válido
     if (!Number.isInteger(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
       console.error(`Número de página inválido: ${num}. Debe estar entre 1 y ${totalPages}`);
       return;

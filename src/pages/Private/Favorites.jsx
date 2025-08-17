@@ -8,7 +8,7 @@ const Favorites = () => {
     <div className="containerFavorites" >
       {favorites && favorites.map((game) => (
         <div className="cardGameFavorites" key={game.id}>
-          <img className="imgFavorite" src={game.background_image} alt={game.name} />
+          <img className="imgFavorite" src={game.background_image} alt={game.name} loading="lazy" />
           <div className="cardOverlayFavorites">
             <h3>{game.name}</h3>
             <p>📅 {game.released}</p>

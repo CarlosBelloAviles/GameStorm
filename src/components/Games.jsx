@@ -1,9 +1,17 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addFavorite } from "../features/games/favoritesSlice";
+import { selectGamesWithFavorites } from "../features/games/selectors";
+import LazyImage from "./common/LazyImage";
 
 export const Games = ({ games, gamesError, gamesLoading }) => {
   const dispatch = useDispatch();
 
+  // Seleccionamos los juegos con favoritos desde el estado
+  const gamesWithFavorites = useSelector(state =>
+    selectGamesWithFavorites(state, games)
+  );
+
+  // Función para agregar juegos a favoritos
   const addFavoritesGames = (games) => {
     dispatch(addFavorite(games));
   };
@@ -15,16 +23,15 @@ export const Games = ({ games, gamesError, gamesLoading }) => {
     {JSON.stringify(gamesError, null, 2)}
   </pre>
 )}
-      {Array.isArray(games?.results) &&
-        games.results.map((game) => (
+      { gamesWithFavorites.map((game) => (
           <div className="cardGame" key={game.id}>
-            <img
+            <LazyImage
               className="imgBackground"
               src={game.background_image}
               alt={game.name}
             />
 
-            <div className="cardOverlay">
+           <div className="cardOverlay">
               <h3>{game.name}</h3>
               <div className="ratings">
                 <p>📅 {game.released}</p>

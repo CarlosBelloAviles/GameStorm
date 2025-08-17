@@ -1,5 +1,4 @@
-
-
+// Este archivo contiene la configuración de Firebase para la aplicación.
 export const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_AUTHDOMAIN,

@@ -1,7 +1,10 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useUser } from "reactfire";
+
 
 const Navbar = () => {
+  const { data: user } = useUser();
   return (
     <header className="navbar-container">
       <nav className="navbar">
@@ -20,32 +23,39 @@ const Navbar = () => {
           <button className="InputButton">buscar</button>
         </div>
         <div className="navbar-right">
-          <NavLink
-            className={({ isActive }) => (isActive ? "Active" : "Inactive")}
-            to="admin/favorites"
-          >
-            Favoritos
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? "Active" : "Inactive")}
-            to="/auth/login"
-          >
-            Login
-          </NavLink>
+          
+          {user ? (
+            <>
+              <NavLink
+                className={({ isActive }) => (isActive ? "Active" : "Inactive")}
+                to="admin/favorites"
+              >
+                Favoritos
+              </NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? "Active" : "Inactive")}
+                to="/admin/usuario"
+              >
+                Mi Perfil
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink
+                className={({ isActive }) => (isActive ? "Active" : "Inactive")}
+                to="/auth/login"
+              >
+                Login
+              </NavLink>
 
-          <NavLink
-            className={({ isActive }) => (isActive ? "Active" : "Inactive")}
-            to="/auth/register"
-          >
-            Register
-          </NavLink>
-
-          <NavLink
-            className={({ isActive }) => (isActive ? "Active" : "Inactive")}
-            to="/admin/usuario"
-          >
-            Mi Perfil
-          </NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? "Active" : "Inactive")}
+                to="/auth/register"
+              >
+                Register
+              </NavLink>
+            </>
+          )}
         </div>
       </nav>
     </header>
