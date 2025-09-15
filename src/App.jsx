@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Public/Home";
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages/Public/Home/Home";
 import RootLayout from "./layout/RootLayout";
 import PublicLayout from "./layout/PublicLayout";
 import AuthLayout from "./layout/AuthLayout";
@@ -10,7 +9,7 @@ import AdminLayout from "./layout/AdminLayout.";
 import { lazySuspense } from "./components/common/LazySuspense";
 
 // Deferir la carga de componentes para mejorar el rendimiento
-const Favorites = lazy(() => import("./pages/Private/Favorites"));
+const Favorites = lazy(() => import("./pages/Private/Favorites/Favorites"));
 const Login = lazy(() => import("./pages/Auth/Login"));
 const Register = lazy(() => import("./pages/Auth/Register"));
 const PerfilUser = lazy(() => import("./pages/Private/PerfilUser"));

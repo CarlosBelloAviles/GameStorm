@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import useScrollGenre from "../hooks/useScrollGenreTablet";
+import useScrollGenre from "../../hooks/useScrollGenreTablet";
+import "./Generos.css";
 
 const Generos = ({ generos, onSelectGenero }) => {
   const scrollRef = useRef(null);

@@ -1,26 +1,19 @@
-import Generos from "../../components/Generos";
-import { Games } from "../../components/Games";
-import { apiSlice } from "../../services/apiSlice";
-import Paginacion from "../../components/Paginacion";
-import {
-  useFetchGamesQuery,
-  useFetchGenresQuery,
-} from "../../services/apiSlice";
+import Generos from "../../../components/Genres/Generos";
+import { Games } from "../../../components/Games/Games";
+import Paginacion from "../../../components/Pagination/Paginacion";
 import { useDispatch, useSelector } from "react-redux";
-import { setGenre } from "../../features/games/gameSlice";
-import { useEffect, useMemo } from "react";
+import { setGenre } from "../../../features/games/gameSlice";
+import { useEffect } from "react";
+import { apiSlice,  useFetchGamesQuery,  useFetchGenresQuery } from "../../../services/apiSlice";
+import "./Home.css";
 
 const Home = () => {
-  const { page, genre } = useSelector((state) => state.games);
 
-  // Llamamos a la consulta de juegos con paginación y género
-  const {
-    data: gamesData,
-    error: gamesError,
-    isLoading: gamesLoading,
-  } = useFetchGamesQuery({ page, genre });
+ const { page, genre } = useSelector((state) => state.games);
 
-  // Llamamos a la consulta de géneros
+  const { data: gamesData, error: gamesError, isLoading: gamesLoading } = useFetchGamesQuery({ page, genre });
+
+ // Llamamos a la consulta de géneros
  const { data: genreData } = useFetchGenresQuery();
 
   
@@ -36,7 +29,7 @@ useEffect(() => {
       }, {})
     );
   }
-}, [page, genre, gamesData, dispatch]);
+}, [page, genre, gamesData, dispatch]); 
 
 
 //// Función para manejar la selección de género
@@ -56,7 +49,7 @@ useEffect(() => {
       <Generos generos={genreData} onSelectGenero={onSelectGenero} />
       <div className="AllGames">
         <Games games={gamesData} gamesError={gamesError} gamesLoading={gamesLoading} />
-        <Paginacion page={page} />
+        <Paginacion  page={page} />
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setPage } from "../features/games/gameSlice";
-import { selectTotalPages } from "../features/games/selectors";
+import { setPage } from "../../features/games/gameSlice";
+import { selectTotalPages } from "../../features/games/selectors";
+import "./Paginacion.css";
 
 
  const Paginacion = ({ page }) => {
   const dispatch = useDispatch();
   
   // Obtenemos el número total de páginas desde el estado
-  const totalPages = useSelector(selectTotalPages);
+   const totalPages = useSelector(selectTotalPages) ;
   
   // Función para manejar el cambio de página
   const PageHandler = (num) => {

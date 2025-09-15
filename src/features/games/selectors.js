@@ -1,22 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { apiSlice } from "../../services/apiSlice";
-// Este archivo contiene selectores para obtener datos de juegos y favoritos desde el estado de Redux.
-
-// Selector para obtener los favoritos desde el estado
-const selectFavorites = (state) => state.favorites.favorites;
-
-// Selector para obtener los juegos con información de favoritoss
-export const selectGamesWithFavorites = createSelector(
-    [selectFavorites, (state, games) => games],
-    (favorites, games) => {
-      const results = games?.results;
-      if (!results) return [];
-      return results.map(game => ({
-        ...game,
-        isFavorite: favorites.some(fav => fav.id === game.id)
-      }));
-    }
-  );
 
 // Selectores para obtener la página y el género actual desde el estado
   const selectGenre = (state) => state.games.genre;
@@ -45,3 +28,19 @@ export const selectGamesWithFavorites = createSelector(
         : calculatedPages;
     }
   ); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

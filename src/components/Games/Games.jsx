@@ -1,20 +1,24 @@
-import { useDispatch, useSelector } from "react-redux";
-import { addFavorite } from "../features/games/favoritesSlice";
-import { selectGamesWithFavorites } from "../features/games/selectors";
-import LazyImage from "./common/LazyImage";
+import { useDispatch } from "react-redux";
+import { addFavorite } from "../../features/games/favoritesSlice";
+import LazyImage from "../common/LazyImage";
+import { useUser } from "reactfire";
+import "../Games/Games.css";
 
 export const Games = ({ games, gamesError, gamesLoading }) => {
   const dispatch = useDispatch();
-
-  // Seleccionamos los juegos con favoritos desde el estado
-  const gamesWithFavorites = useSelector(state =>
-    selectGamesWithFavorites(state, games)
-  );
+  const { data: user} = useUser()
+  
 
   // Función para agregar juegos a favoritos
-  const addFavoritesGames = (games) => {
-    dispatch(addFavorite(games));
+  const addFavoritesGames = (game) => {
+    if (user) {
+      dispatch(addFavorite(game));
+    } else {
+      alert("Debes iniciar sesión para agregar juegos a favoritos");
+    }
   };
+
+
   return (
     <div className="gridGames">
       {gamesLoading && <div className="loadingContainer"><span className="loader"></span></div>}
@@ -23,7 +27,8 @@ export const Games = ({ games, gamesError, gamesLoading }) => {
     {JSON.stringify(gamesError, null, 2)}
   </pre>
 )}
-      { gamesWithFavorites.map((game) => (
+      { Array.isArray(games?.results) && 
+      games.results.map((game) => (
           <div className="cardGame" key={game.id}>
             <LazyImage
               className="imgBackground"
