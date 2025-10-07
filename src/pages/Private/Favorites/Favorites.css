@@ -1,0 +1,42 @@
+/* === FAVORITES === */
+.containerFavorites {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 1rem;
+    height: auto;
+    background: radial-gradient(ellipse at top left, #1c1c1c, #0f0f0f);
+  }
+  
+  .cardGameFavorites{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .cardGameFavorites:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.15);
+  }
+  
+  .imgFavorite {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  
+  @media (max-width: 768px) {
+  
+    .containerFavorites{
+    grid-template-columns: repeat(1, 1fr);
+    height: auto;
+    padding: 30px;
+    }
+  }

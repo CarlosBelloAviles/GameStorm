@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Establece el estado inicial del slice
 const initialState = {
   page: 1,
   genre: "",
 };
-
+// Crea el slice de Redux para manejar la paginación y el género de los juegos
 const gameSlice = createSlice({
   name: "games",
   initialState,

@@ -1,19 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Favorites from "./pages/Private/Favorites";
-import Home from "./pages/Public/Home";
+import { lazy } from "react";
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages/Public/Home/Home";
 import RootLayout from "./layout/RootLayout";
 import PublicLayout from "./layout/PublicLayout";
-import AdminLayout from "./layout/AdminLayout.";
 import AuthLayout from "./layout/AuthLayout";
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
-import PerfilUser from "./pages/Private/PerfilUser";
+import AdminLayout from "./layout/AdminLayout.";
+import { lazySuspense } from "./components/common/LazySuspense";
+
+// Deferir la carga de componentes para mejorar el rendimiento
+const Favorites = lazy(() => import("./pages/Private/Favorites/Favorites"));
+const Login = lazy(() => import("./pages/Auth/Login"));
+const Register = lazy(() => import("./pages/Auth/Register"));
+const PerfilUser = lazy(() => import("./pages/Private/PerfilUser"));
 
 function App() {
-  return (
-    <>
+ return (
+      <>
       <Navbar />
       <Routes>
         <Route element={<RootLayout />}>
@@ -21,15 +24,16 @@ function App() {
             <Route index element={<Home />} />
           </Route>
           <Route path="admin" element={<AdminLayout />}>
-            <Route path="favorites" element={<Favorites />} />
-            <Route path="usuario" element={<PerfilUser />} />
+            <Route path="favorites" element={lazySuspense(Favorites)} />
+            <Route path="usuario" element={lazySuspense(PerfilUser)} />
           </Route>
           <Route path="auth" element={<AuthLayout />}>
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
+            <Route path="login" element={lazySuspense(Login)} />
+            <Route path="register" element={lazySuspense(Register)} />
           </Route>
         </Route>
       </Routes>
+      
     </>
   );
 }

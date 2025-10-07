@@ -1,10 +1,10 @@
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import React from "react";
 import { AuthProvider, FirestoreProvider, StorageProvider, useFirebaseApp } from "reactfire";
 
 const FirebaseServices = ({ children }) => {
+ // Este componente envuelve a los hijos con los proveedores de Firebase
   const app = useFirebaseApp();
   const auth = getAuth(app)
   const firestore = getFirestore(app)

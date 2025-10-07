@@ -1,12 +1,24 @@
 import { useDispatch } from "react-redux";
-import { addFavorite } from "../features/games/favoritesSlice";
+import { addFavorite } from "../../features/games/favoritesSlice";
+import LazyImage from "../common/LazyImage";
+import { useUser } from "reactfire";
+import "../Games/Games.css";
 
 export const Games = ({ games, gamesError, gamesLoading }) => {
   const dispatch = useDispatch();
+  const { data: user} = useUser()
+  
 
-  const addFavoritesGames = (games) => {
-    dispatch(addFavorite(games));
+  // Función para agregar juegos a favoritos
+  const addFavoritesGames = (game) => {
+    if (user) {
+      dispatch(addFavorite(game));
+    } else {
+      alert("Debes iniciar sesión para agregar juegos a favoritos");
+    }
   };
+
+
   return (
     <div className="gridGames">
       {gamesLoading && <div className="loadingContainer"><span className="loader"></span></div>}
@@ -15,16 +27,16 @@ export const Games = ({ games, gamesError, gamesLoading }) => {
     {JSON.stringify(gamesError, null, 2)}
   </pre>
 )}
-      {Array.isArray(games?.results) &&
-        games.results.map((game) => (
+      { Array.isArray(games?.results) && 
+      games.results.map((game) => (
           <div className="cardGame" key={game.id}>
-            <img
+            <LazyImage
               className="imgBackground"
               src={game.background_image}
               alt={game.name}
             />
 
-            <div className="cardOverlay">
+           <div className="cardOverlay">
               <h3>{game.name}</h3>
               <div className="ratings">
                 <p>📅 {game.released}</p>

@@ -1,0 +1,36 @@
+/* === CONTENEDOR GENERAL DE LAS TARJETAS Y GENEROS=== */
+.containerHome {
+  display: flex;
+  gap: 2.5rem;
+  width: 100%;
+  min-height: 100vh;
+ 
+  }
+
+/* === CONTENEDOR DE TODOS LOS JUEGOS === */
+.AllGames {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 3rem 2rem;
+  background: radial-gradient(ellipse at top left, #1c1c1c, #0f0f0f);
+}
+
+/* === MEDIA QUERIES === */
+
+@media (max-width: 1024px) {
+  /* === CONTENEDOR GENERAL DE LAS TARJETAS Y GENEROS=== */
+  .containerHome {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    height: auto;
+  }
+
+  /* === GAMES === */
+  .AllGames {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+}

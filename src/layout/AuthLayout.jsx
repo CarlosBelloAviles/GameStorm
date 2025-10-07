@@ -3,6 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useSigninCheck } from "reactfire";
 
 const AuthLayout = () => {
+  // Este componente maneja la autenticación del usuario y redirige según su estado de inicio de sesión.
   const { status, data: signInCheckResult, hasEmitted } = useSigninCheck();
 
   if (status === "loading" || !hasEmitted) {
@@ -12,7 +13,7 @@ const AuthLayout = () => {
       </div>
     );
   }
-
+// Si el usuario está autenticado, redirige a la página principal.
   if (status === "success" && signInCheckResult.signedIn) {
     return <Navigate to="/" replace />;
   }
