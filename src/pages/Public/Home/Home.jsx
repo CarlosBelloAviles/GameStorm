@@ -7,10 +7,11 @@ import "./Home.css";
 
 const Home = () => {
   const {
-    gamesData,
+    renderToGames,
     genreData,
-    gamesError,
-    gamesLoading,
+    searchTerm,
+    error,
+    isLoading,
     page,
     onSelectGenero,
   } = useGamesData();
@@ -20,11 +21,11 @@ const Home = () => {
       <Generos generos={genreData} onSelectGenero={onSelectGenero} />
       <div className="AllGames">
         <Games
-          games={gamesData}
-          gamesError={gamesError}
-          gamesLoading={gamesLoading}
+          games={renderToGames}
+          gamesError={error}
+          gamesLoading={isLoading}
         />
-        <Paginacion page={page} />
+       {!searchTerm && <Paginacion page={page} /> } 
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ const Search = () => {
          placeholder="Buscar juegos..."
          className="search-input"
          value={searchTerm}
-         onChange={(e) => dispatch(searchTerm(e.target.value))}
+         onChange={(e) => dispatch(setSearchTerm(e.target.value))}
               />
         <button type="submit" className="InputButton">buscar</button>
         {searchTerm && (

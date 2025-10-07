@@ -21,12 +21,10 @@ export const apiSlice = createApi({
         return await baseQuery(url, api, extraOptions); 
       },
     }),
-    fetchSearch: builder.query({
-      async queryFn({searchTerm}, api, extraOptions, baseQuery){
-        const url = `games?key=${apiKey}&search=${searchTerm}&page=1&page_size=20`;
-         return await baseQuery(url, api, extraOptions); 
-      }
-    })
+     fetchSearch: builder.query({
+      query: ({ searchTerm }) =>
+        `games?key=${apiKey}&search=${searchTerm}&page=1&page_size=6`,
+    }),
   }),
 });
 

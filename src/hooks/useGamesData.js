@@ -10,22 +10,28 @@ import { setGenre } from "../features/games/gameSlice";
 
 export const useGamesData = () => {
   const { page, genre } = useSelector((state) => state.games);
-  const searchTerm = useSelector((state) => state.search.SearchTerm)
+  const searchTerm = useSelector((state) => state.search.SearchTerm);
   const dispatch = useDispatch();
 
   const {
     data: gamesData,
     error: gamesError,
     isLoading: gamesLoading,
-  } = useFetchGamesQuery({ page, genre }, {skip: !!searchTerm});
+  } = useFetchGamesQuery({ page, genre }, { skip: !!searchTerm });
 
   // Llamamos a la consulta de géneros
   const { data: genreData } = useFetchGenresQuery();
-  
-  // Llamamos a la consulta de Buscador de Juegos
-  const { data: searchData} = useFetchSearchQuery(searchTerm, {skip: !searchTerm})
 
-  const renderToGmaes = searchTerm? searchData : gamesData
+  // Llamamos a la consulta de Buscador de Juegos
+  const {
+    data: searchData,
+    error: searchError,
+    isLoading: searchLoading,
+  } = useFetchSearchQuery({ searchTerm }, { skip: !searchTerm });
+
+  const renderToGames = searchTerm ? searchData : gamesData;
+  const isLoading = searchTerm ? searchLoading : gamesLoading;
+  const error = searchTerm ? searchError : gamesError;
 
   // Efecto para prefetch de juegos cuando hay más resultados disponibles
   useEffect(() => {
@@ -56,9 +62,10 @@ export const useGamesData = () => {
   return {
     gamesData,
     genreData,
-    renderToGmaes,
-    gamesError,
-    gamesLoading,
+    renderToGames,
+    error,
+    isLoading,
+    searchTerm,
     page,
     genre,
     onSelectGenero,

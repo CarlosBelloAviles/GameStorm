@@ -62,42 +62,6 @@ const Navbar = () => {
             )}
           </div>
         </div>
-
-        {/* <div className="navbar-right">
-          
-          {user ? (
-            <>
-              <NavLink
-                className={({ isActive }) => (isActive ? "Active" : "Inactive")}
-                to="admin/favorites"
-              >
-                Favoritos
-              </NavLink>
-              <NavLink
-                className={({ isActive }) => (isActive ? "Active" : "Inactive")}
-                to="/admin/usuario"
-              >
-                Mi Perfil
-              </NavLink>
-            </>
-          ) : (
-            <>
-              <NavLink
-                className={({ isActive }) => (isActive ? "Active" : "Inactive")}
-                to="/auth/login"
-              >
-                Login
-              </NavLink>
-
-              <NavLink
-                className={({ isActive }) => (isActive ? "Active" : "Inactive")}
-                to="/auth/register"
-              >
-                Register
-              </NavLink>
-            </>
-          )}
-        </div> */}
       </nav>
     </header>
   );
