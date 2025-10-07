@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const apiKey = import.meta.env.VITE_API_KEY;
+const apiKey = import.meta.env.VITE_RAWG_API_KEY;
 
 // Este archivo define un slice de API para manejar las consultas a la API de RAWG
 export const apiSlice = createApi({
@@ -21,10 +21,16 @@ export const apiSlice = createApi({
         return await baseQuery(url, api, extraOptions); 
       },
     }),
+    fetchSearch: builder.query({
+      async queryFn({searchTerm}, api, extraOptions, baseQuery){
+        const url = `games?key=${apiKey}&search=${searchTerm}&page=1&page_size=20`;
+         return await baseQuery(url, api, extraOptions); 
+      }
+    })
   }),
 });
 
-export const { useFetchGenresQuery, useFetchGamesQuery } = apiSlice;
+export const { useFetchGenresQuery, useFetchGamesQuery, useFetchSearchQuery } = apiSlice;
 
 
 
@@ -41,8 +47,12 @@ export const { useFetchGenresQuery, useFetchGamesQuery } = apiSlice;
     fetchGenres: builder.query({
       query: () => `genres?key=${apiKey}`,
     }),
+    fetchSearch: builder.query({
+      query: ({searchTerm}) =>
+        `games?key=${apiKey}&search=${searchTerm}&page=1&page_size=20`,
+    })
   })
 });
 
 
-export const { useFetchGamesQuery, useFetchGenresQuery } = apiSlice; */
+export const { useFetchGamesQuery, useFetchGenresQuery, useFetchSearchQuery } = apiSlice; */

@@ -2,9 +2,10 @@
 .containerHome {
   display: flex;
   gap: 2.5rem;
-  width: auto;
+  width: 100%;
   min-height: 100vh;
-}
+ 
+  }
 
 /* === CONTENEDOR DE TODOS LOS JUEGOS === */
 .AllGames {
@@ -13,8 +14,6 @@
   flex-direction: column;
   gap: 2.5rem;
   padding: 3rem 2rem;
-  width: 85%;
-  margin: 0 auto;
   background: radial-gradient(ellipse at top left, #1c1c1c, #0f0f0f);
 }
 
@@ -32,5 +31,6 @@
   /* === GAMES === */
   .AllGames {
     width: 100%;
+    padding: 2rem 1rem;
   }
 }

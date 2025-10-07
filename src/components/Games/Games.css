@@ -3,8 +3,8 @@
     position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-    
+    gap: 2rem;
+    width: 100%;
   }
 
 .cardGame {
@@ -178,3 +178,5 @@
       box-shadow: 0.2em -0.2em 0 0 currentcolor;
     }
   }
+
+

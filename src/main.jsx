@@ -6,8 +6,8 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 import { BrowserRouter } from "react-router-dom";
 import { FirebaseAppProvider } from "reactfire";
-import { firebaseConfig } from "./config/firebase.js";
 import FirebaseServices from "./config/firebase-services.jsx";
+import { firebaseConfig } from "./config/firebase.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

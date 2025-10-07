@@ -1,7 +1,6 @@
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import React from "react";
 import { AuthProvider, FirestoreProvider, StorageProvider, useFirebaseApp } from "reactfire";
 
 const FirebaseServices = ({ children }) => {
