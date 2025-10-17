@@ -29,7 +29,11 @@ export const useGamesData = () => {
     isLoading: searchLoading,
   } = useFetchSearchQuery({ searchTerm }, { skip: !searchTerm });
 
-  const renderToGames = searchTerm ? searchData : gamesData;
+  const renderToGames = searchTerm && searchData
+    ? searchData
+    : !searchTerm && gamesData
+    ? gamesData
+    : { results: [] };
   const isLoading = searchTerm ? searchLoading : gamesLoading;
   const error = searchTerm ? searchError : gamesError;
 

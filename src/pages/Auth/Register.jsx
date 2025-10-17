@@ -1,5 +1,4 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import React from 'react'
 import { useAuth } from 'reactfire'
 
 const Register = () => {

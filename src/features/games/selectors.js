@@ -28,19 +28,3 @@ import { apiSlice } from "../../services/apiSlice";
         : calculatedPages;
     }
   ); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

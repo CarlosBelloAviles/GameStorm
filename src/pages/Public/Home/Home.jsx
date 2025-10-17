@@ -1,5 +1,5 @@
 import Generos from "../../../components/Genres/Generos";
-import { Games } from "../../../components/Games/Games";
+import { GridGames } from "../../../components/GridGames/GridGames";
 import Paginacion from "../../../components/Pagination/Paginacion";
 import { useGamesData } from "../../../hooks/useGamesData";
 import "./Home.css";
@@ -20,13 +20,14 @@ const Home = () => {
     <div className="containerHome">
       <Generos generos={genreData} onSelectGenero={onSelectGenero} />
       <div className="AllGames">
-        <Games
+        <GridGames
           games={renderToGames}
           gamesError={error}
           gamesLoading={isLoading}
         />
-       {!searchTerm && <Paginacion page={page} /> } 
-      </div>
+        {!searchTerm && <Paginacion page={page} /> } 
+       </div>
+
     </div>
   );
 };
