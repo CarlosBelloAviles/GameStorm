@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  apiSlice,
   useFetchGamesQuery,
   useFetchGenresQuery,
   useFetchSearchQuery,
-} from "../services/apiSlice";
-import { useEffect } from "react";
-import { setGenre } from "../features/games/gameSlice";
+} from "../store/games/api/gamesApi";
+import { setGenre } from "../store/games/slices/gameSlice";
+import { usePrefetchGames } from './usePrefetchGames';
+
 
 export const useGamesData = () => {
   const { page, genre } = useSelector((state) => state.games);
@@ -37,31 +37,20 @@ export const useGamesData = () => {
   const isLoading = searchTerm ? searchLoading : gamesLoading;
   const error = searchTerm ? searchError : gamesError;
 
-  // Efecto para prefetch de juegos cuando hay más resultados disponibles
-  useEffect(() => {
-    if (gamesData?.results?.length && gamesData.next) {
-      dispatch(
-        apiSlice.util.prefetch(
-          "fetchGames",
-          {
-            page: page + 1,
-            genre,
-          },
-          {}
-        )
-      );
-    }
-  }, [page, genre, gamesData, dispatch]);
+  // Utilizamos el hook personalizado para el prefetch
+  usePrefetchGames({
+    page,
+    genre,
+    gamesData,
+    isSearchActive: !!searchTerm
+  });
 
   //// Función para manejar la selección de género
   const onSelectGenero = (slug) => {
     dispatch(setGenre(slug));
   };
 
-  // Efecto para desplazar la ventana al inicio cuando cambie la página o el género
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [page, genre]);
+ 
 
   return {
     gamesData,

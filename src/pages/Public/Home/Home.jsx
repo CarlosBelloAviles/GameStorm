@@ -2,10 +2,14 @@ import Generos from "../../../components/Genres/Generos";
 import { GridGames } from "../../../components/GridGames/GridGames";
 import Paginacion from "../../../components/Pagination/Paginacion";
 import { useGamesData } from "../../../hooks/useGamesData";
+import { useScrollToTopOnChange } from "../../../hooks/useScrollToTopOnChange";
 import "./Home.css";
 
 
 const Home = () => {
+  // Hook para manejar el scroll
+  useScrollToTopOnChange();
+  
   const {
     renderToGames,
     genreData,

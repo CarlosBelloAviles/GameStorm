@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import "./Search.css"
-import { clearSearch, setSearchTerm } from "../../features/games/searchSlice";
+import { clearSearch, setSearchTerm } from "../../store/games/slices/searchSlice";
 
 const Search = () => {
   const dispatch = useDispatch();

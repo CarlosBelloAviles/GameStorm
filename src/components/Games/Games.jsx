@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import LazyImage from "../common/LazyImage";
 import { useUser } from "reactfire";
-import { addFavorite } from "../../features/games/favoritesSlice";
+import { addFavorite } from "../../store/games/slices/favoritesSlice";
 import "../Games/Games.css";
 
 const Games = ({ game }) => {

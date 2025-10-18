@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setPage } from "../../features/games/gameSlice";
-import { selectTotalPages } from "../../features/games/selectors";
+import { setPage } from "../../store/games/slices/gameSlice";
+import { selectTotalPages } from "../../store/games/selectors/gamesSelectors";
 import "./Paginacion.css";
 
 
@@ -11,7 +11,7 @@ import "./Paginacion.css";
    const totalPages = useSelector(selectTotalPages) ;
   
   // Función para manejar el cambio de página
-  const PageHandler = (num) => {
+  const PageHandler = async (num) => {
     const pageNumber = parseInt(num);
     // Validamos que el número de página sea un entero y esté dentro del rango válido
     if (!Number.isInteger(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
@@ -19,8 +19,15 @@ import "./Paginacion.css";
       return;
     } 
     
-   if (pageNumber !== page) {
+    if (pageNumber !== page) {
       dispatch(setPage(pageNumber));
+      // Aseguramos que el scroll se ejecute después de la actualización del estado
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
     }
   };
 
