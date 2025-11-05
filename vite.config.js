@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/GameStorm/',
+  // No necesitamos base URL para Vercel
 })
