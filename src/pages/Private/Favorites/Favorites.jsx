@@ -1,6 +1,5 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFavorites } from "../../../features/games/favoritesSlice";
+import{removeFavorites} from "../../../store/games/slices/favoritesSlice"
 import "./Favorites.css";
 
 const Favorites = () => {
