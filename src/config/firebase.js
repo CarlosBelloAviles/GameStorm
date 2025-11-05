@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 
 // Configuración de Firebase
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_AUTH_DOMAIN,
     projectId: import.meta.env.VITE_PROJECT_ID,
@@ -11,7 +11,5 @@ const firebaseConfig = {
 };
 
 // Inicializar Firebase
-const app = initializeApp(firebaseConfig);
-
-export default app;
+export const app = initializeApp(firebaseConfig);
 
