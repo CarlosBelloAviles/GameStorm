@@ -1,1 +1,0 @@
-import{k as s,j as r,G as t,s as i}from"./index-DjjOTUfr.js";const a=()=>{const e=s(),n=async()=>{try{const o=new t;await i(e,o)}catch(o){console.error("Error en Iniciar Sesion con Google",o)}};return r.jsxs("div",{children:[r.jsx("h3",{children:"Regsiter"}),r.jsx("button",{onClick:n,children:" Sign In Google"})]})};export{a as default};
