@@ -17,7 +17,10 @@ export const useGamesData = () => {
     data: gamesData,
     error: gamesError,
     isLoading: gamesLoading,
-  } = useFetchGamesQuery({ page, genre }, { skip: !!searchTerm });
+  } = useFetchGamesQuery({ page, genre }, { 
+    skip: !!searchTerm,
+    refetchOnMountOrArgChange: true
+  });
 
   // Llamamos a la consulta de géneros
   const { data: genreData } = useFetchGenresQuery();

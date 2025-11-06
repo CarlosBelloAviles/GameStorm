@@ -14,8 +14,8 @@ createRoot(document.getElementById("root")).render(
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <Provider store={store}>
         <FirebaseServices>
-          <BrowserRouter>
-            <App />
+          <BrowserRouter basename={import.meta.env.DEV ? '/' : '/GameStorm'}>
+            <App key={import.meta.env.DEV ? 'dev' : 'prod'} />
           </BrowserRouter>
         </FirebaseServices>
       </Provider>
