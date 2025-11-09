@@ -25,6 +25,7 @@ function App() {
           <Route element={<RootLayout />}>
             <Route element={<PublicLayout />}>
               <Route index element={<Home />} />
+              <Route path="/" element={<Home />} />
             </Route>
             <Route path="admin" element={<AdminLayout />}>
               <Route path="favorites" element={lazySuspense(Favorites)} />
