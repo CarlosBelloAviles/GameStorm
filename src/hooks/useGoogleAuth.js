@@ -15,7 +15,11 @@ export const useGoogleAuth = () => {
             return result.user;
         } catch (error) {
             console.error('Error en la autenticación con Google:', error);
-            throw error;
+            if (error.code === 'auth/unauthorized-domain') {
+                throw new Error('Este dominio no está autorizado para iniciar sesión. Por favor, contacta al administrador.');
+            } else {
+                throw error;
+            }
         }
     };
 
