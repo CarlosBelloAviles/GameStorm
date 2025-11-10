@@ -1,1 +1,0 @@
-import{c as n,g as s,G as a,s as c}from"./index-CmYTfcWu.js";const g=()=>{const e=n(),r=s();return{signInWithGoogle:async()=>{try{const o=new a,t=await c(r,o);return console.log("Usuario autenticado:",t.user),e("/"),t.user}catch(o){throw console.error("Error en la autenticación con Google:",o),o}}}};export{g as u};
